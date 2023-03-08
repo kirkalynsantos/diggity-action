@@ -1,0 +1,27 @@
+{
+  "name": "diggity-action",
+  "version": "1.0.0",
+  "description": "BOM Diggity’s primary purpose is to ensure the security and integrity of software programs. It incorporates secret analysis allowing the user to secure crucial information before deploying any parts of the application to the public.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirkalynsantos/diggity-action.git"
+  },
+  "author": "sairen",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/kirkalynsantos/diggity-action/issues"
+  },
+  "homepage": "https://github.com/kirkalynsantos/diggity-action#readme",
+  "keywords": [
+    "GitHub",
+    "Actions"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/exec": "^1.1.1"
+  }
+}

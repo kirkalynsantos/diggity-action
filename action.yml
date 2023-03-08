@@ -1,0 +1,12 @@
+name: Diggity Scan
+description: BOM Diggity’s primary purpose is to ensure the security and integrity of software programs. It incorporates secret analysis allowing the user to secure crucial information before deploying any parts of the application to the public.
+author: Carbonetes
+
+inputs:
+  directory:
+    required: true
+    description: The path directory to scan.
+    
+runs:
+  using: node16
+  main: index.js
