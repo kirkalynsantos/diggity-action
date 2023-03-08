@@ -1,6 +1,6 @@
 
 # diggity-action
-diggity provides organizations with a more comprehensive look at their application to take calculated actions and create a better security approach. Its primary purpose is to scan vulnerabilities to implement subsequent risk mitigation measures. 
+BOM Diggity’s primary purpose is to ensure the security and integrity of software programs. It incorporates secret analysis allowing the user to secure crucial information before deploying any parts of the application to the public.
 
 ## Directory Scanning
 
@@ -17,7 +17,6 @@ jobs:
       - name: Run carbonetes/diggity # runs the github action of diggity
         uses: carbonetes/diggity@v1.0.0 # runs the github action using this version
         with: # user’s input reference for scanning options, results that diggity-action supported.
-          fail_on_vulnerability: true # sample output reference: job fails when vulnerability found.
           path: "."
 
 ```
