@@ -74,7 +74,7 @@ async function constructCommandExec(scanOption) {
         case DIRECTORY:
             // Check output type
             let outputType = core.getInput('output_type')
-            if (outputType !== null || outputType !== '') {
+            if (outputType === null || outputType === '') {
                 outputType = TABLE;
             }
 
