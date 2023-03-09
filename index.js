@@ -73,7 +73,7 @@ async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            args = [...args, '-d', directoryInput]
+            args = [...args, '-d', string(directoryInput)]
             break;
 
         default:
@@ -81,7 +81,7 @@ async function constructCommandExec(scanOption) {
             break;
     }
 
-    core.info(args)
+    core.info("ARGS: ", args)
     exec.exec('./bin/diggity', ...args);
 }
 
