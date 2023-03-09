@@ -19,7 +19,7 @@ async function run() {
         // Download the script using https
         const options = {
             hostname: 'raw.githubusercontent.com',
-            path: '/carbonetes/Diggity/main/install.sh',
+            path: '/carbonetes/diggity/main/install.sh',
             method: 'GET'
         };
         const request = https.request(options, response => {
@@ -44,7 +44,7 @@ async function run() {
                 // Check scan option based on user's input
                 scanOption = checkUserInput();
 
-                // Call the Diggity binary
+                // Call the diggity binary
                 await constructCommandExec(scanOption)
             });
         });
@@ -69,7 +69,7 @@ function checkUserInput() {
 async function constructCommandExec(scanOption) {
     switch (scanOption) {
         case DIRECTORY:
-            exec.exec('./bin/Diggity', ['-d', directoryInput]);
+            exec.exec('./bin/diggity', ['-d', directoryInput]);
             break;
 
         default:
@@ -78,5 +78,5 @@ async function constructCommandExec(scanOption) {
     }
 }
 
-// Start Diggity-Action
+// Start diggity-Action
 run();
