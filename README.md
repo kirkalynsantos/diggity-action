@@ -1,3 +1,7 @@
+<p align="center">
+<img src="assets/diggity-black.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+</p>
+
 # Diggity Github Action
 A Github Action integrated with [Diggity](https://github.com/carbonetes/diggity#readme) to generate software bill-of-materials (SBOM).
 ## Directory Scanning
