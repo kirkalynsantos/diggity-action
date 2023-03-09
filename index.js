@@ -8,11 +8,12 @@ const exec = require('@actions/exec');
 
 /** var */
 var directoryInput;
-var outputType
+var outputType;
 var scanOption;
 
 /** const */
 const DIRECTORY = 'directory';
+const TABLE = 'table';
 
 
 async function run() {
@@ -67,14 +68,22 @@ function checkScanOption() {
     }
 }
 
+// Check user's input for output type
+function checkOutputType() {
+    outputType = core.getInput('output_type')
+    if (outputType !== null || outputType !== '') {
+        return TABLE;
+    }
+}
+
 async function constructCommandExec(scanOption) {
-    // let args = []
-    
+    // Check output type
+    outputType = checkOutputType()
+
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            exec.exec('./bin/diggity', ["-d", directoryInput]);
-            // args = [...args, "-d", directoryInput]
+            exec.exec('./bin/diggity', ["-d", directoryInput, "-o", outputType]);
             break;
 
         default:
