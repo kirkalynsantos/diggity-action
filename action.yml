@@ -10,6 +10,8 @@ inputs:
     description: The desired SBOM output type.
   enabled_parsers:
     description: Selected parsers to scan (default all).
+  output_file:
+    description: Filename to save the SBOM results.
 
 
 runs:
