@@ -1,7 +1,5 @@
-
-# diggity-action
-BOM Diggity’s primary purpose is to ensure the security and integrity of software programs. It incorporates secret analysis allowing the user to secure crucial information before deploying any parts of the application to the public.
-
+# Diggity Github Action
+A Github Action integrated with [Diggity](https://github.com/carbonetes/diggity#readme) to generate software bill-of-materials (SBOM).
 ## Directory Scanning
 
 ```yaml
