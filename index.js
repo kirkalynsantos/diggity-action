@@ -67,24 +67,17 @@ function checkScanOption() {
     }
 }
 
-// Check user's input for output type
-async function checkOutputType() {
-    const outputType = core.getInput('output_type')
-    if (outputType !== null || outputType !== '') {
-        return TABLE;
-    }
-    return outputType
-}
-
 
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
             // Check output type
-            const outputType = await checkOutputType()
+            let outputType = core.getInput('output_type')
+            if (outputType !== null || outputType !== '') {
+                outputType = TABLE;
+            }
 
-            core.info("OUTPUT TYPE:", outputType)
             exec.exec('./bin/diggity', ["-d", directoryInput, "-o", outputType]);
             break;
 
