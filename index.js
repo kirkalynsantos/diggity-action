@@ -77,6 +77,16 @@ function checkOutputType() {
     return outputType
 }
 
+// Check user's input for enabled parsers
+function checkEnabledParsers() {
+    let enabledParsers = core.getInput('enabled_parsers')
+    core.info(enabledParsers)
+    // if (enabledParsers === null || enabledParsers === '') {
+    //     return ALL;
+    // }
+    // return enabledParsers
+}
+
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
@@ -84,6 +94,7 @@ async function constructCommandExec(scanOption) {
             const outputType = checkOutputType()
             let args = ["-d", directoryInput, "-o", outputType]
 
+            checkEnabledParsers()
             exec.exec('./bin/diggity', args);
             break;
 

@@ -8,7 +8,10 @@ inputs:
     description: The path directory to scan.
   output_type:
     description: The desired SBOM output type.
-    
+  enabled_parsers:
+    description: Selected parsers to scan (default all).
+
+
 runs:
   using: node16
   main: index.js
