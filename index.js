@@ -81,6 +81,7 @@ async function constructCommandExec(scanOption) {
             break;
     }
 
+    core.info(args)
     exec.exec('./bin/diggity', ...args);
 }
 
