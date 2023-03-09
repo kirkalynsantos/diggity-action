@@ -67,16 +67,25 @@ function checkScanOption() {
     }
 }
 
+function checkOutputType() {
+    let outputType = core.getInput('output_type')
+    if (outputType === null || outputType === '') {
+        return TABLE;
+    }
+    return outputType
+}
+
 
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
             // Check output type
-            let outputType = core.getInput('output_type')
-            if (outputType === null || outputType === '') {
-                outputType = TABLE;
-            }
+            // let outputType = core.getInput('output_type')
+            // if (outputType === null || outputType === '') {
+            //     outputType = TABLE;
+            // }
+            const outputType = checkOutputType()
 
             exec.exec('./bin/diggity', ["-d", directoryInput, "-o", outputType]);
             break;
