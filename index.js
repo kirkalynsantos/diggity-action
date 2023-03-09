@@ -83,6 +83,7 @@ async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
+            core.info("OUTPUT TYPE:", outputType)
             exec.exec('./bin/diggity', ["-d", directoryInput, "-o", outputType]);
             break;
 
