@@ -73,6 +73,7 @@ async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
+            core.info("DIRECTORY: ", directoryInput)
             args = [...args, "-d", directoryInput]
             break;
 
