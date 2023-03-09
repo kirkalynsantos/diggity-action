@@ -6,10 +6,10 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 /**  */
 
-/** let */
-let directoryInput;
-let outputType
-let scanOption;
+/** var */
+var directoryInput;
+var outputType
+var scanOption;
 
 /** const */
 const DIRECTORY = 'directory';
@@ -73,8 +73,7 @@ async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            core.info("DIRECTORY:", directoryInput)
-            args.push("-d", directoryInput)
+            args = [...args, "-d", directoryInput]
             break;
 
         default:
@@ -82,7 +81,6 @@ async function constructCommandExec(scanOption) {
             break;
     }
 
-    core.info("ARGS: ", args)
     exec.exec('./bin/diggity', ...args);
 }
 
