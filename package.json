@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/kirkalynsantos/diggity-action.git"
   },
-  "author": "sairen",
+  "author": "kirk",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/kirkalynsantos/diggity-action/issues"
