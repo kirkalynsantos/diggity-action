@@ -80,21 +80,25 @@ function checkOutputType() {
 // Check user's input for enabled parsers
 function checkEnabledParsers() {
     let enabledParsers = core.getInput('enabled_parsers')
-    core.info(enabledParsers)
-    // if (enabledParsers === null || enabledParsers === '') {
-    //     return ALL;
-    // }
-    // return enabledParsers
+    if (enabledParsers === null || enabledParsers === '' || enabledParsers.toUpperCase() === ALL) {
+        return ALL;
+    }
+    return enabledParsers
 }
 
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
+            // Check for output type
             const outputType = checkOutputType()
             let args = ["-d", directoryInput, "-o", outputType]
 
-            checkEnabledParsers()
+            // Check for enabled parsers
+            const enabledParsers = checkEnabledParsers()
+            if (enabledParsers !== ALL) args.push(`--enabled-parsers=${enabledParsers}`)
+
+            // Execute Diggity
             exec.exec('./bin/diggity', args);
             break;
 
