@@ -3,7 +3,7 @@
 </p>
 
 # Diggity Github Action
-A Github Action integrated with [Diggity](https://github.com/carbonetes/diggity#readme) to generate software bill-of-materials (SBOM).
+A Github Action that utilizes [Diggity](https://github.com/carbonetes/diggity#readme) to generate software bill-of-materials (SBOM).
 ## Directory Scanning
 
 ```yaml

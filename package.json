@@ -1,7 +1,7 @@
 {
   "name": "diggity-action",
   "version": "1.0.0",
-  "description": "BOM Diggity’s primary purpose is to ensure the security and integrity of software programs. It incorporates secret analysis allowing the user to secure crucial information before deploying any parts of the application to the public.",
+  "description": "A Github Action that utilizes Diggity to generate software bill-of-materials (SBOM).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
