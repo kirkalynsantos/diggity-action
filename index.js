@@ -6,9 +6,10 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 /**  */
 
-/** var */
-var directoryInput;
-var scanOption;
+/** let */
+let directoryInput;
+let outputType
+let scanOption;
 
 /** const */
 const DIRECTORY = 'directory';
@@ -42,16 +43,13 @@ async function run() {
 
 
                 // Check scan option based on user's input
-                core.info('1');
-                scanOption = checkUserInput();
+                scanOption = checkScanOption();
 
-                core.info('2');
                 // Call the diggity binary
                 await constructCommandExec(scanOption)
             });
         });
         request.on('error', error => {
-            core.info('err1');
             core.setFailed(error.message);
         });
         request.end();
@@ -62,8 +60,7 @@ async function run() {
 }
 
 // Check user's input and set scan option
-function checkUserInput() {
-    core.info('checkUserInput');
+function checkScanOption() {
     directoryInput = core.getInput('directory', { required: true })
     if (directoryInput !== null || directoryInput !== '') {
         return DIRECTORY;
@@ -71,16 +68,20 @@ function checkUserInput() {
 }
 
 async function constructCommandExec(scanOption) {
-    core.info('constructCommandExec');
+    let args = []
+    
+    // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            exec.exec('./bin/diggity', ['-d', directoryInput]);
+            args = [...args, '-d', directoryInput]
             break;
 
         default:
             core.setFailed('Scan Option not found')
             break;
     }
+
+    exec.exec('./bin/diggity', ...args);
 }
 
 // Start diggity-Action
