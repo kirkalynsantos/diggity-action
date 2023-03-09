@@ -73,8 +73,7 @@ async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            const dirInput = ['-d', directoryInput]
-            args = [...args, ...dirInput]
+            args.push("-d", directoryInput)
             break;
 
         default:
