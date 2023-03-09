@@ -17,7 +17,8 @@ jobs:
       - name: Run carbonetes/diggity # runs the github action of diggity
         uses: carbonetes/diggity@v1.0.0 # runs the github action using this version
         with: # user’s input reference for scanning options, results that diggity-action supported.
-          path: "."
+          directory: "." # path to directory to be scanned
+          output_type: json # desired output format (default table)
 
 ```
 

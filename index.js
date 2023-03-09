@@ -13,6 +13,7 @@ var scanOption;
 /** const */
 const DIRECTORY = 'directory';
 const TABLE = 'table';
+const ALL = 'all'
 
 
 async function run() {
@@ -67,6 +68,7 @@ function checkScanOption() {
     }
 }
 
+// Check user's input for output type
 function checkOutputType() {
     let outputType = core.getInput('output_type')
     if (outputType === null || outputType === '') {
@@ -75,19 +77,14 @@ function checkOutputType() {
     return outputType
 }
 
-
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            // Check output type
-            // let outputType = core.getInput('output_type')
-            // if (outputType === null || outputType === '') {
-            //     outputType = TABLE;
-            // }
             const outputType = checkOutputType()
+            let args = ["-d", directoryInput, "-o", outputType]
 
-            exec.exec('./bin/diggity', ["-d", directoryInput, "-o", outputType]);
+            exec.exec('./bin/diggity', args);
             break;
 
         default:
