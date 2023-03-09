@@ -42,13 +42,16 @@ async function run() {
 
 
                 // Check scan option based on user's input
+                core.info('1');
                 scanOption = checkUserInput();
 
+                core.info('2');
                 // Call the diggity binary
                 await constructCommandExec(scanOption)
             });
         });
         request.on('error', error => {
+            core.info('err1');
             core.setFailed(error.message);
         });
         request.end();
@@ -60,6 +63,7 @@ async function run() {
 
 // Check user's input and set scan option
 function checkUserInput() {
+    core.info('checkUserInput');
     directoryInput = core.getInput('directory', { required: true })
     if (directoryInput !== null || directoryInput !== '') {
         return DIRECTORY;
@@ -67,6 +71,7 @@ function checkUserInput() {
 }
 
 async function constructCommandExec(scanOption) {
+    core.info('constructCommandExec');
     switch (scanOption) {
         case DIRECTORY:
             exec.exec('./bin/diggity', ['-d', directoryInput]);
