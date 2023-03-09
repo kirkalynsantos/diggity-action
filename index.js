@@ -68,21 +68,19 @@ function checkScanOption() {
 }
 
 async function constructCommandExec(scanOption) {
-    let args = []
+    // let args = []
     
     // Check scan option
     switch (scanOption) {
         case DIRECTORY:
-            core.info("DIRECTORY: ", directoryInput)
-            args = [...args, "-d", directoryInput]
+            exec.exec('./bin/diggity', ["-d", directoryInput]);
+            // args = [...args, "-d", directoryInput]
             break;
 
         default:
             core.setFailed('Scan Option not found')
             break;
     }
-
-    exec.exec('./bin/diggity', ...args);
 }
 
 // Start diggity-Action

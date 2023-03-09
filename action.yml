@@ -6,6 +6,8 @@ inputs:
   directory:
     required: true
     description: The path directory to scan.
+  output_type:
+    description: The desired SBOM output type.
     
 runs:
   using: node16
