@@ -1,5 +1,5 @@
-name: Diggity Scan
-description: BOM Diggity’s primary purpose is to ensure the security and integrity of software programs.
+name: Diggity Action
+description: A Github Action integrated with Diggity to generate software bill-of-materials (SBOM).
 author: Carbonetes
 
 inputs:
@@ -10,9 +10,6 @@ inputs:
     description: The desired SBOM output type.
   enabled_parsers:
     description: Selected parsers to scan (default all).
-  output_file:
-    description: Filename to save the SBOM results.
-
 
 runs:
   using: node16
