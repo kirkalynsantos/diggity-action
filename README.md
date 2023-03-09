@@ -21,6 +21,7 @@ jobs:
         with: # user’s input reference for scanning options, results that diggity-action supported.
           directory: "." # path to directory to be scanned
           output_type: json # desired output format (default table)
+          enabled_parsers: apk,go # selected parsers enabled (default all)
 
 ```
 
