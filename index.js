@@ -86,6 +86,15 @@ function checkEnabledParsers() {
     return enabledParsers
 }
 
+// Check user's input for output file
+function checkOutputFile() {
+    let outputFile = core.getInput('output_file')
+    if (outputFile === null || outputFile === '' ) {
+        return null;
+    }
+    return outputFile
+}
+
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
@@ -97,6 +106,10 @@ async function constructCommandExec(scanOption) {
             // Check for enabled parsers
             const enabledParsers = checkEnabledParsers()
             if (enabledParsers !== ALL) args.push(`--enabled-parsers=${enabledParsers}`)
+
+            // Check for output file
+            const outputFile = checkOutputFile()
+            if (outputFile !== null) args.push('-f', outputFile)
 
             // Execute Diggity
             exec.exec('./bin/diggity', args);
