@@ -102,7 +102,7 @@ function checkOutputFile() {
 // Upload SBOM as an artifact
 async function uploadSBOM() {
     const sbomFile = checkOutputFile()
-    if ( sbomFile() === null || sbomFile === '' ) return
+    if ( sbomFile === null || sbomFile === '' ) return
 
     const client = artifact.create()
     const files = [sbomFile]
