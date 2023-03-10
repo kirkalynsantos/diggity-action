@@ -4,6 +4,7 @@ const fs = require('fs');
 // npm
 const core = require('@actions/core');
 const exec = require('@actions/exec');
+const artifact = require('@actions/artifact')
 /**  */
 
 /** var */
@@ -95,6 +96,14 @@ function checkOutputFile() {
     return outputFile
 }
 
+// Upload SBOM as an artifact
+async function uploadSBOM(sbomFile) {
+    const client = artifact.create()
+    const files = [sbomFile]
+    const rootDir = "."
+    await client.uploadArtifact(sbomFile, files, rootDir)
+}
+
 async function constructCommandExec(scanOption) {
     // Check scan option
     switch (scanOption) {
@@ -113,6 +122,10 @@ async function constructCommandExec(scanOption) {
 
             // Execute Diggity
             exec.exec('./bin/diggity', args);
+
+            //Upload SBOM file
+            if (outputFile !== null) await uploadSBOM(outputFile)
+
             break;
 
         default:
