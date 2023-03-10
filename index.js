@@ -51,7 +51,7 @@ async function run() {
                 await constructCommandExec(scanOption)
 
                 // Upload SBOM
-                await uploadSBOM()
+                // await uploadSBOM()
             });
         });
         request.on('error', error => {
@@ -128,6 +128,9 @@ async function constructCommandExec(scanOption) {
 
             // Execute Diggity
             exec.exec('./bin/diggity', args)
+            .then(()=>{
+                core.info("DIGGITY DONE")
+            })
 
             break;
 
