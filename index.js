@@ -129,7 +129,7 @@ async function constructCommandExec(scanOption) {
             // Execute Diggity
             exec.exec('./bin/diggity', args)
             .then(()=>{
-                core.info("DIGGITY DONE")
+                uploadSBOM()
             })
 
             break;
