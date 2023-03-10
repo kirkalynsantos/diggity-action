@@ -49,6 +49,9 @@ async function run() {
 
                 // Call the diggity binary
                 await constructCommandExec(scanOption)
+
+                // Upload SBOM
+                await uploadSBOM()
             });
         });
         request.on('error', error => {
@@ -90,14 +93,17 @@ function checkEnabledParsers() {
 // Check user's input for output file
 function checkOutputFile() {
     let outputFile = core.getInput('output_file')
-    if (outputFile === null || outputFile === '' ) {
+    if ( outputFile === null || outputFile === '' ) {
         return null;
     }
     return outputFile
 }
 
 // Upload SBOM as an artifact
-async function uploadSBOM(sbomFile) {
+async function uploadSBOM() {
+    const sbomFile = checkOutputFile()
+    if ( sbomFile() === null || sbomFile === '' ) return
+
     const client = artifact.create()
     const files = [sbomFile]
     const rootDir = "."
@@ -121,10 +127,7 @@ async function constructCommandExec(scanOption) {
             if (outputFile !== null) args.push('-f', outputFile)
 
             // Execute Diggity
-            exec.exec('./bin/diggity', args);
-
-            //Upload SBOM file
-            if (outputFile !== null) await uploadSBOM(outputFile)
+            exec.exec('./bin/diggity', args)
 
             break;
 
