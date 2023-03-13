@@ -67,6 +67,8 @@ async function run() {
 function checkScanOption() {
     directoryInput = core.getInput('directory')
     tarInput = core.getInput('tar')
+    core.info("DIRECTORY INPUT: ", directoryInput)
+    core.info("TAR INPUT: ", tarInput)
 
     if (directoryInput !== null || directoryInput !== '') {
         core.info("DIRECTORY")
