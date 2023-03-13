@@ -70,10 +70,10 @@ function checkScanOption() {
     core.info("DIRECTORY INPUT: ", directoryInput)
     core.info("TAR INPUT: ", tarInput)
 
-    if (directoryInput !== null || directoryInput !== '') {
+    if (directoryInput !== null && directoryInput !== '') {
         core.info("DIRECTORY")
         return DIRECTORY;
-    } else if (tarInput !== null || tarInput !== '') {
+    } else if (tarInput !== null && tarInput !== '') {
         core.info("TAR")
         return TAR;
     } else {
