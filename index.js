@@ -163,7 +163,7 @@ async function constructCommandExec(scanOption) {
             // Check for disable file listing
             if (checkDisableFileListing()) args.push('--disable-file-listing')
 
-            // Check for disable file listing
+            // Check for disable secret search
             if (checkDisableSecretSearch()) args.push('--disable-secret-search')
 
             // Check for secret exclude filenames
