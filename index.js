@@ -96,6 +96,45 @@ function checkOutputFile() {
     return outputFile
 }
 
+// Check user's input for disable file listing
+function checkDisableFileListing() {
+    let disableFileListing = core.getInput('disable_file_listing')
+    return disableFileListing.trim().toUpperCase() === "TRUE"
+}
+
+// Check user's input for disable secret search
+function checkDisableSecretSearch() {
+    let disableSecretSearch = core.getInput('disable_secret_search')
+    return disableSecretSearch.trim().toUpperCase() === "TRUE"
+}
+
+// Check user's input for secret exclude filenames
+function checkSecretExcludeFilenames() {
+    let secretExcludeFilenames = core.getInput('secret_exclude_filenames')
+    if (secretExcludeFilenames === null || secretExcludeFilenames === '') {
+        return null;
+    }
+    return secretExcludeFilenames
+}
+
+// Check user's input for secret max file size
+function checkSecretMaxFileSize() {
+    let secretMaxFileSize = core.getInput('secret_max_file_size')
+    if (secretMaxFileSize === null || secretMaxFileSize === '' || isNaN(secretMaxFileSize.trim())) {
+        return null;
+    }
+    return secretMaxFileSize
+}
+
+// Check user's input for secret content regex
+function checkSecretsContentRegex() {
+    let secretsContentRegex = core.getInput('secrets_content_regex')
+    if (secretsContentRegex === null || secretsContentRegex === '') {
+        return null;
+    }
+    return secretsContentRegex
+}
+
 // Upload SBOM as an artifact
 async function uploadSBOM(sbomFile) {
     if (sbomFile === null || sbomFile === '') return
@@ -120,6 +159,24 @@ async function constructCommandExec(scanOption) {
             // Check for output file
             const outputFile = checkOutputFile()
             if (outputFile !== null) args.push('-f', outputFile)
+
+            // Check for disable file listing
+            if (checkDisableFileListing()) args.push('--disable-file-listing')
+
+            // Check for disable file listing
+            if (checkDisableSecretSearch()) args.push('--disable-secret-search')
+
+            // Check for secret exclude filenames
+            const secretExcludeFilenames = checkSecretExcludeFilenames()
+            if (secretExcludeFilenames !== null) args.push(`--secret-exclude-filenames=${secretExcludeFilenames}`)
+
+            // Check for secret max file size
+            const secretMaxFileSize = checkSecretMaxFileSize()
+            if (secretMaxFileSize !== null) args.push(`--secret-max-file-size=${secretMaxFileSize}`)
+
+            // Check for secrets content regex
+            const secretsContentRegex = checkSecretsContentRegex()
+            if (secretsContentRegex !== null) args.push(`--secrets-content-regex=${secretsContentRegex}`)
 
             // Execute Diggity
             exec.exec('./bin/diggity', args)
