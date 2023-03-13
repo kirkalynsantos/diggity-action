@@ -69,11 +69,14 @@ function checkScanOption() {
     tarInput = core.getInput('tar')
 
     if (directoryInput !== null || directoryInput !== '') {
+        core.info("DIRECTORY")
         return DIRECTORY;
     } else if (tarInput !== null || tarInput !== '') {
+        core.info("TAR")
         return TAR;
     } else {
         // Scan current working directory by default
+        core.info("DEFAULT")
         directoryInput = "."
         return DIRECTORY
     }
