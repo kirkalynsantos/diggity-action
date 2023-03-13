@@ -21,7 +21,12 @@ jobs:
         with: # user’s input reference for scanning options, results that diggity-action supported.
           directory: "." # path to directory to be scanned
           output_type: json # desired output format (default table)
-          enabled_parsers: apk,go # selected parsers enabled (default all)
+          enabled_parsers: apk,go # specified enabled parsers (default all)
+          disable_file_listing: true #  disables file listing from package metadata (default false).
+          disable_secret_search: true #  disables secret search (default false).
+          secret_exclude_filenames: filename_1,filename_2 # exclude secret searching for each specified filenames.
+          secret_max_file_size: 10485760 # maximum file size that the secret will search (default 10485760).
+          secrets_content_regex: content_regex # secret content regex are searched within files that matches the provided regular expression.
 
 ```
 
