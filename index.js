@@ -67,18 +67,13 @@ async function run() {
 function checkScanOption() {
     directoryInput = core.getInput('directory')
     tarInput = core.getInput('tar')
-    core.info("DIRECTORY INPUT: ", directoryInput)
-    core.info("TAR INPUT: ", tarInput)
 
     if (directoryInput !== null && directoryInput !== '') {
-        core.info("DIRECTORY")
         return DIRECTORY;
     } else if (tarInput !== null && tarInput !== '') {
-        core.info("TAR")
         return TAR;
     } else {
         // Scan current working directory by default
-        core.info("DEFAULT")
         directoryInput = "."
         return DIRECTORY
     }

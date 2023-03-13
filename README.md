@@ -27,6 +27,7 @@ jobs:
           secret_exclude_filenames: filename_1,filename_2 # exclude secret searching for each specified filenames.
           secret_max_file_size: 10485760 # maximum file size that the secret will search (default 10485760).
           secrets_content_regex: content_regex # secret content regex are searched within files that matches the provided regular expression.
+          tar: layer.tar # The path to tar file to be scanned.
 
 ```
 
